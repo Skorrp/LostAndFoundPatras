@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LostAndFoundPatras"
+             x:Class="LostAndFoundPatras.MainPage">
+
+    <Shell.Resources>
+        <Style x:Key="LostStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="Crimson"/>
+            <Setter Property="Shell.ForegroundColor" Value="AliceBlue"/>
+            <Setter Property="Shell.TitleColor" Value="Black"/>
+            <Setter Property="Shell.UnselectedColor" Value="White"/>
+        </Style>
+        <Style x:Key="FoundStyle" TargetType="Element"
+               BasedOn="{StaticResource LostStyle}">
+            <Setter Property="Shell.BackgroundColor" Value="#008050"/>
+        </Style>
+        <Style x:Key="AddStyle" TargetType="Element"
+               BasedOn="{StaticResource LostStyle}">
+            <Setter Property="Shell.BackgroundColor" Value="OrangeRed"/>
+        </Style>
+    </Shell.Resources>
+
+    <Shell.FlyoutHeader>
+        <local:HeaderContentView/>
+    </Shell.FlyoutHeader>
+
+
+
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
+                Shell.TabBarIsVisible="True"
+                Title="Pets"
+                Icon="lost_pets.jpg">
+
+        <Tab Icon="lost.png"
+             Title="Lost"
+             Style="{StaticResource LostStyle}">
+            
+            <ShellContent Title="LostPets" Icon="lost_pets.png" IsTabStop="True" ContentTemplate="{DataTemplate local:LostPetsPage}" />
+        </Tab>
+        <Tab Icon="found.png"
+             Title="Found"
+             Style="{StaticResource FoundStyle}">
+            <ShellContent Title="LostPets" Icon="lost_pets.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundPetsPage}" />
+        </Tab>
+        <Tab Icon="ic_action_add.png"
+             Title="Add"
+             Style="{StaticResource AddStyle}">
+            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundVehiclesPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
+                Shell.TabBarIsVisible="True"
+                Title="Vehicles"
+                Icon="lost_vehicles.jpg">
+
+        <Tab Icon="lost.png"
+             Title="Lost"
+             Style="{StaticResource LostStyle}">
+            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:LostVehiclesPage}" />
+        </Tab>
+        <Tab Icon="found.png"
+             Title="Found"
+             Style="{StaticResource FoundStyle}">
+            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundVehiclesPage}" />
+        </Tab>
+        <Tab Icon="ic_action_add.png"
+             Title="Add"
+             Style="{StaticResource AddStyle}">
+            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundVehiclesPage}" />
+        </Tab>
+    </FlyoutItem>
+    <ShellContent Title="About" Icon="info.png" ContentTemplate="{DataTemplate local:LostPetsPage}" />
+    
+</Shell>

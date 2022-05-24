@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostAndFoundPatras.HeaderContentView"
+             HeightRequest="170">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <Image Aspect="AspectFill"
+                Source="gradient.jfif"
+                Grid.ColumnSpan="5"
+                Grid.RowSpan="4"
+                Opacity="0.6" />
+            <Image Source="userimage.png" HeightRequest="80" WidthRequest="80" 
+                x:Name="imgProfile"
+                Grid.Column="1" 
+                Grid.Row="1"
+                HorizontalOptions="Start"
+                VerticalOptions="End"/>
+
+            <StackLayout VerticalOptions="CenterAndExpand" Grid.Row="1" Margin="10,0,0,0"
+                Grid.Column="2" Grid.ColumnSpan="3" Orientation="Vertical">
+                <Label
+                    x:Name="Username"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
+                    TextColor="White"
+                    Text=""/>
+
+                <Label 
+                    x:Name="Email"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
+                    TextColor="White" Text=""/>
+                
+                <Button
+                    x:Name="btnLogin"
+                    TextColor="White"
+                    Text="Login"
+                    BackgroundColor="Transparent"
+                    Margin="-30,-10,155,0"
+                    Clicked="btnLogin_Clicked"/>
+                
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

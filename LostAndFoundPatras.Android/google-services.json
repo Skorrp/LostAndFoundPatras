@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "230741245358",
+    "firebase_url": "https://lafp-58cbb-default-rtdb.firebaseio.com",
+    "project_id": "lafp-58cbb",
+    "storage_bucket": "lafp-58cbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230741245358:android:e00f3b0b3274d75c679c3f",
+        "android_client_info": {
+          "package_name": "com.companyname.lostandfoundpatras"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230741245358-ivkc25p7m8i1ceolb14jla1lgg594s9j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.lostandfoundpatras",
+            "certificate_hash": "389f7b5d2d2702edf0248f24b7b888b438fdba98"
+          }
+        },
+        {
+          "client_id": "230741245358-87k093n15ap08sru2qubrdi1ofqnq6bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxdu9CEi_XfpUipJKyQsHxzvBTjKe6Dtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230741245358-87k093n15ap08sru2qubrdi1ofqnq6bp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
