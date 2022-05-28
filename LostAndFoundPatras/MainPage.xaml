@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:LostAndFoundPatras"
+             xmlns:content="clr-namespace:LostAndFoundPatras.Content"
              x:Class="LostAndFoundPatras.MainPage">
 
     <Shell.Resources>
@@ -35,18 +36,17 @@
         <Tab Icon="lost.png"
              Title="Lost"
              Style="{StaticResource LostStyle}">
-            
-            <ShellContent Title="LostPets" Icon="lost_pets.png" IsTabStop="True" ContentTemplate="{DataTemplate local:LostPetsPage}" />
+            <ShellContent Title="LostPets" IsTabStop="True" ContentTemplate="{DataTemplate content:LostPetsPage}" />
         </Tab>
         <Tab Icon="found.png"
              Title="Found"
              Style="{StaticResource FoundStyle}">
-            <ShellContent Title="LostPets" Icon="lost_pets.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundPetsPage}" />
+            <ShellContent Title="LostPets" IsTabStop="True" ContentTemplate="{DataTemplate content:FoundPetsPage}" />
         </Tab>
         <Tab Icon="ic_action_add.png"
              Title="Add"
              Style="{StaticResource AddStyle}">
-            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundVehiclesPage}" />
+            <ShellContent Title="AddPets" IsTabStop="True" ContentTemplate="{DataTemplate content:AddPetsPage}" />
         </Tab>
     </FlyoutItem>
 
@@ -58,19 +58,18 @@
         <Tab Icon="lost.png"
              Title="Lost"
              Style="{StaticResource LostStyle}">
-            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:LostVehiclesPage}" />
+            <ShellContent Title="LostVehicles" IsTabStop="True" ContentTemplate="{DataTemplate content:LostVehiclesPage}" />
         </Tab>
         <Tab Icon="found.png"
              Title="Found"
              Style="{StaticResource FoundStyle}">
-            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundVehiclesPage}" />
+            <ShellContent Title="FoundVehicles" IsTabStop="True" ContentTemplate="{DataTemplate content:FoundVehiclesPage}" />
         </Tab>
         <Tab Icon="ic_action_add.png"
              Title="Add"
              Style="{StaticResource AddStyle}">
-            <ShellContent Title="LostVehicles" Icon="lost_vehicles.png" IsTabStop="True" ContentTemplate="{DataTemplate local:FoundVehiclesPage}" />
+            <ShellContent Title="AddVehicles" IsTabStop="True" ContentTemplate="{DataTemplate content:AddVehiclesPage}" />
         </Tab>
     </FlyoutItem>
-    <ShellContent Title="About" Icon="info.png" ContentTemplate="{DataTemplate local:LostPetsPage}" />
-    
+    <ShellContent Title="About" Icon="info.png" ContentTemplate="{DataTemplate content:AboutPage}" />
 </Shell>

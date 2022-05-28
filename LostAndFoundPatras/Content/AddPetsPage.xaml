@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LostAndFoundPatras.Content.AddPetsPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             BackgroundColor="#112B40">
+    <ContentPage.Content>
+        <StackLayout Padding="40">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="60"/>
+
+                </Grid.RowDefinitions>
+
+                <Button
+                    x:Name="btnTheme"
+                    Clicked="btnTheme_Clicked"
+                    Text="theme"
+                    TextTransform="Lowercase"
+                    BackgroundColor="White"
+                    TextColor="#112B40"
+                    Grid.Column="4"
+                    Grid.Row="0"
+                    Margin="54,1,0,10"
+                    HeightRequest="50"
+                    CornerRadius="20"
+                    BorderColor="ForestGreen"
+                    BorderWidth="1.5"/>
+            </Grid>
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Label TextColor="White" Text="Lost your Pet? Found a pet you believe someone's looking for?" HorizontalTextAlignment="Center"/>
+                <Label TextColor="White" Text="Submit the form below now!" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <RadioButton Content="Lost" 
+                             Padding="0,0,50,0" 
+                             TextColor="Gray" 
+                             BackgroundColor="Transparent"
+                             CheckedChanged="RadioButton_CheckedChanged"/>
+                <RadioButton Content="Found" 
+                             Padding="0,0,0,0" 
+                             TextColor="Gray" 
+                             BackgroundColor="Transparent"
+                             CheckedChanged="RadioButton_CheckedChanged"/>
+                <Label x:Name="answer"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Label Text="Date:"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       Padding="0,13,0,0"/>
+                <DatePicker Format="dd/MM/yyyy" 
+                            Date="{Binding SelectedFromDate}" 
+                            MaximumDate="{x:Static sys:DateTime.Now}"
+                            TextColor="Gray"
+                            BackgroundColor="Transparent" />
+            </StackLayout>
+            <StackLayout>
+                <Editor TextColor="Gray"
+                        HeightRequest="100"
+                        Placeholder="Write a description here"
+                        PlaceholderColor="Gray"/>
+                <Label Text="Contact Details:"
+                       TextColor="White"/>
+                <Entry Placeholder="Email"
+                       PlaceholderColor="Gray"
+                       TextColor="Gray"/>
+                <Entry Placeholder="Phone Number"
+                       PlaceholderColor="Gray"
+                       TextColor="Gray"/>
+                <Entry Placeholder="Area"
+                       PlaceholderColor="Gray"
+                       TextColor="Gray"/>
+                <Button Text="Submit"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        BorderColor="ForestGreen"
+                        BorderWidth="1.5"
+                        CornerRadius="30"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

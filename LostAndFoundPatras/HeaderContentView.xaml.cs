@@ -27,9 +27,9 @@ namespace LostAndFoundPatras
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
             
-            if (btnLogin.Text == "Logout")
+            if (IsLogedIn)
             {
-              GoogleLogout();
+                GoogleLogout();
             }
             else
                 _googleManager.Login(OnLoginComplete);

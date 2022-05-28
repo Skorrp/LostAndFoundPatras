@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LostAndFoundPatras
+namespace LostAndFoundPatras.Content
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FoundVehiclesPage : ContentPage
+    public partial class AboutPage : ContentView
     {
-        public FoundVehiclesPage()
+        public AboutPage()
         {
             InitializeComponent();
         }
