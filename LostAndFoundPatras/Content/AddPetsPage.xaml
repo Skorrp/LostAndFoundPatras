@@ -17,7 +17,6 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="60"/>
 
                 </Grid.RowDefinitions>
 
@@ -70,17 +69,38 @@
                         HeightRequest="100"
                         Placeholder="Write a description here"
                         PlaceholderColor="Gray"/>
+                <Entry Placeholder="Area"
+                       PlaceholderColor="Gray"
+                       TextColor="Gray"/>
+
+                <StackLayout Orientation="Horizontal" Spacing="20">  
+                    <Button Text="Upload Photo"
+                        Clicked="Button_Clicked"
+                        TextTransform="None"
+                        BackgroundColor="#112B40"
+                        TextColor="White"
+                        BorderColor="ForestGreen"
+                        BorderWidth="1.5"
+                        CornerRadius="25"/>
+                <Label x:Name="downloadLink"
+                       TextColor="White"
+                       VerticalOptions="Center"/>
+                </StackLayout>
+                <ProgressBar x:Name="progressBar"
+                             ProgressColor="ForestGreen"
+                             IsVisible="False"
+                             Grid.Row="1"
+                             Grid.ColumnSpan="1"/>
                 <Label Text="Contact Details:"
-                       TextColor="White"/>
+                       TextColor="White"
+                       Padding="0,20,0,0"/>
                 <Entry Placeholder="Email"
                        PlaceholderColor="Gray"
                        TextColor="Gray"/>
                 <Entry Placeholder="Phone Number"
                        PlaceholderColor="Gray"
-                       TextColor="Gray"/>
-                <Entry Placeholder="Area"
-                       PlaceholderColor="Gray"
-                       TextColor="Gray"/>
+                       TextColor="Gray"
+                       MaxLength="10"/>
                 <Button Text="Submit"
                         TextColor="White"
                         BackgroundColor="Transparent"

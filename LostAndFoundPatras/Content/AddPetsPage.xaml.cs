@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Firebase.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -39,6 +39,37 @@ namespace LostAndFoundPatras.Content
         private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
+        }
+
+        async private void Button_Clicked(object sender, EventArgs e)
+        {
+            var photo = await Xamarin.Essentials.MediaPicker.PickPhotoAsync();
+            if (photo == null)
+                return;
+            var task = new FirebaseStorage("lafp-58cbb.appspot.com", new FirebaseStorageOptions
+            {
+                ThrowOnCancel = true
+            })
+                .Child("petsPhotoFolder")
+                .Child(photo.FileName)
+                .PutAsync(await photo.OpenReadAsync());
+
+            task.Progress.ProgressChanged += (s, args) =>
+            {
+                progressBar.IsVisible = true;
+                progressBar.Progress = args.Percentage;
+            };
+            var downloadlink = await task;
+            progressBar.IsVisible = false;
+            downloadLink.Text = "Photo uploaded Successfully!";
+            //Device.StartTimer(new TimeSpan(0, 0, 3), () =>
+            //{
+              //  Device.BeginInvokeOnMainThread(() =>
+                //{
+                  //  downloadLink.Text = "";
+                //});
+                //return false;
+            //});
         }
     }
 }

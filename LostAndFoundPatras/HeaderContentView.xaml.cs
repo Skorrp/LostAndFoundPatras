@@ -22,9 +22,12 @@ namespace LostAndFoundPatras
         }
         //private void CheckUserLoggedIn()
         //{
-        //    _googleManager.Login(OnLoginComplete);
-        //}
-        private void btnLogin_Clicked(object sender, EventArgs e)
+            //if (!isLogedin)
+            //{
+            //    _googleManager.Login(OnLoginComplete);
+            //}
+    //}
+    private void btnLogin_Clicked(object sender, EventArgs e)
         {
             
             if (IsLogedIn)
