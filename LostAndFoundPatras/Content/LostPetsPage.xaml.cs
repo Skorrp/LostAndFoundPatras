@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LostAndFoundPatras.Models;
+using LostAndFoundPatras.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,7 @@ namespace LostAndFoundPatras.Content
         public LostPetsPage()
         {
             InitializeComponent();
+            this.BindingContext = new PetListPageViewModel();
         }
     }
 }

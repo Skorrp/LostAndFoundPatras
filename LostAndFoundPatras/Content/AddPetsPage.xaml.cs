@@ -1,4 +1,6 @@
 ﻿using Firebase.Storage;
+using LostAndFoundPatras.Models;
+using LostAndFoundPatras.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +14,21 @@ namespace LostAndFoundPatras.Content
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPetsPage : ContentPage
     {
-        bool isWhite;
+        private string downloadlink = string.Empty;
+        bool isWhite = false;
         public AddPetsPage()
         {
             InitializeComponent();
+            this.BindingContext = new AddPetsPageViewModel();
         }
 
+        public AddPetsPage(PetModel pet)
+        {
+            InitializeComponent();
+            this.BindingContext = new AddPetsPageViewModel(pet);
+        }
+
+        //Change to dark theme and vice versa
         private void btnTheme_Clicked(object sender, EventArgs e)
         {
             if (isWhite)
@@ -39,8 +50,9 @@ namespace LostAndFoundPatras.Content
         private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
             RadioButton radioButton = sender as RadioButton;
+            _lost.Text = $"{radioButton.Content}";
         }
-
+        //Upload Photo
         async private void Button_Clicked(object sender, EventArgs e)
         {
             var photo = await Xamarin.Essentials.MediaPicker.PickPhotoAsync();
@@ -59,17 +71,24 @@ namespace LostAndFoundPatras.Content
                 progressBar.IsVisible = true;
                 progressBar.Progress = args.Percentage;
             };
-            var downloadlink = await task;
+            downloadlink = await task;
             progressBar.IsVisible = false;
-            downloadLink.Text = "Photo uploaded Successfully!";
             //Device.StartTimer(new TimeSpan(0, 0, 3), () =>
             //{
-              //  Device.BeginInvokeOnMainThread(() =>
-                //{
-                  //  downloadLink.Text = "";
-                //});
-                //return false;
+            //  Device.BeginInvokeOnMainThread(() =>
+            //{
+            //  downloadLink.Text = "";
             //});
+            //return false;
+            //});
+            downloadLink.Text = downloadlink;
+            string ddd = PetDate.Date.ToString();
+            _date.Text = ddd;
+
+        }
+
+        async private void Button_Clicked_1(object sender, EventArgs e)
+        {
         }
     }
 }

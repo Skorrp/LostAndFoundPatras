@@ -1,13 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LostAndFoundPatras.ViewModels"
+             xmlns:models="clr-namespace:LostAndFoundPatras.Models"
+             x:DataType="viewmodels:PetListPageViewModel"
+             Title="Pet List"
              x:Class="LostAndFoundPatras.Content.LostPetsPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is the lost pets page!"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalOptions="CenterAndExpand"
-                   FontSize="22"/>
+        <StackLayout Margin="10,0,10,0">
+            <ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="True" />
+
+            <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" >
+                <CollectionView ItemsSource="{Binding Pets}" x:Name="lostpetspage">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:PetModel">
+                            <StackLayout Margin="10,5,10,0">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Date Lost: " />
+                                    <Label Text="{Binding Date}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Description: " />
+                                    <Label Text="{Binding Description}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Area Lost: " />
+                                    <Label Text="{Binding Area}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Photo: " />
+                                    <Image Source="{Binding Photo}"
+                                           HeightRequest="120"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Email: " />
+                                    <Label Text="{Binding Email}" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Phone Number: " />
+                                    <Label Text="{Binding PhoneNumber}" />
+                                </StackLayout>
+                                <BoxView HeightRequest="1" Color="Gray" />
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:PetListPageViewModel}},Path=SelectedPetCommand}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

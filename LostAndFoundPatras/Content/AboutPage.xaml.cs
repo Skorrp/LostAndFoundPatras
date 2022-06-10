@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace LostAndFoundPatras.Content
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : ContentView
+    public partial class AboutPage : ContentPage
     {
         public AboutPage()
         {

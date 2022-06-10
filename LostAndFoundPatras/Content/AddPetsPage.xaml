@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LostAndFoundPatras.Content.AddPetsPage"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:viewmodels="clr-namespace:LostAndFoundPatras.ViewModels"
+             x:DataType="viewmodels:AddPetsPageViewModel"
+             x:Class="LostAndFoundPatras.Content.AddPetsPage"
              BackgroundColor="#112B40">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="40">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -59,22 +62,26 @@
                        HorizontalTextAlignment="Center"
                        Padding="0,13,0,0"/>
                 <DatePicker Format="dd/MM/yyyy" 
-                            Date="{Binding SelectedFromDate}" 
+                            x:Name="PetDate"
+                            Date="{x:Static sys:DateTime.Today}"
                             MaximumDate="{x:Static sys:DateTime.Now}"
                             TextColor="Gray"
-                            BackgroundColor="Transparent" />
+                            BackgroundColor="Transparent"
+                            />
             </StackLayout>
             <StackLayout>
                 <Editor TextColor="Gray"
                         HeightRequest="100"
                         Placeholder="Write a description here"
-                        PlaceholderColor="Gray"/>
+                        PlaceholderColor="Gray"
+                        Text="{Binding PetDetail.Description}"/>
                 <Entry Placeholder="Area"
                        PlaceholderColor="Gray"
-                       TextColor="Gray"/>
+                       TextColor="Gray"
+                       Text="{Binding PetDetail.Area}"/>
 
-                <StackLayout Orientation="Horizontal" Spacing="20">  
-                    <Button Text="Upload Photo"
+                <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Button Text="Upload Photo"
                         Clicked="Button_Clicked"
                         TextTransform="None"
                         BackgroundColor="#112B40"
@@ -82,10 +89,7 @@
                         BorderColor="ForestGreen"
                         BorderWidth="1.5"
                         CornerRadius="25"/>
-                <Label x:Name="downloadLink"
-                       TextColor="White"
-                       VerticalOptions="Center"/>
-                </StackLayout>
+                    </StackLayout>
                 <ProgressBar x:Name="progressBar"
                              ProgressColor="ForestGreen"
                              IsVisible="False"
@@ -96,18 +100,40 @@
                        Padding="0,20,0,0"/>
                 <Entry Placeholder="Email"
                        PlaceholderColor="Gray"
-                       TextColor="Gray"/>
+                       TextColor="Gray"
+                       Text="{Binding PetDetail.Email}"/>
                 <Entry Placeholder="Phone Number"
                        PlaceholderColor="Gray"
                        TextColor="Gray"
-                       MaxLength="10"/>
-                <Button Text="Submit"
-                        TextColor="White"
-                        BackgroundColor="Transparent"
-                        BorderColor="ForestGreen"
-                        BorderWidth="1.5"
-                        CornerRadius="30"/>
-            </StackLayout>
+                       MaxLength="10"
+                       Text="{Binding PetDetail.PhoneNumber}"
+                       Keyboard="Numeric"/>
+                <Image x:Name="testpic"/>
+                    <Button Text="Submit"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            BorderColor="ForestGreen"
+                            BorderWidth="1.5"
+                            CornerRadius="30"
+                            Command="{Binding SavePetCommand}" 
+                            Clicked="Button_Clicked_1"/>
+                    <Entry x:Name="downloadLink"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           Text="{Binding PetDetail.Photo}" IsVisible="False"/>
+                    <Entry x:Name="_date"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           IsVisible="False"
+                           Text="{Binding PetDetail.Date}"/>
+                    <Entry x:Name="_lost"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           IsVisible="False"
+                           Text="{Binding PetDetail.Lost}"/>
+
+                </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
