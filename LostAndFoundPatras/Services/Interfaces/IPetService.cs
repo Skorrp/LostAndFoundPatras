@@ -10,6 +10,6 @@ namespace LostAndFoundPatras.Services.Interfaces
     {
         Task<bool> AddOrUpdatePet(PetModel petModel);
         Task<bool> DeletePet(string key);
-        Task<List<PetModel>> GetAllPets();
+        Task<List<PetModel>> GetLostPets();
     }
 }

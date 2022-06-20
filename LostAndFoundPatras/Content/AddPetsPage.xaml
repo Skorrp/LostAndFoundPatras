@@ -43,16 +43,18 @@
                 <Label TextColor="White" Text="Submit the form below now!" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <RadioButton Content="Lost" 
+                <RadioButton x:Name="ch1"
+                             Content="Lost"
                              Padding="0,0,50,0" 
                              TextColor="Gray" 
                              BackgroundColor="Transparent"
-                             CheckedChanged="RadioButton_CheckedChanged"/>
-                <RadioButton Content="Found" 
+                             CheckedChanged="RadioButton_CheckedChanged" Unfocused="email_Unfocused"/>
+                <RadioButton x:Name="ch2"
+                             Content="Found"
                              Padding="0,0,0,0" 
                              TextColor="Gray" 
                              BackgroundColor="Transparent"
-                             CheckedChanged="RadioButton_CheckedChanged"/>
+                             CheckedChanged="RadioButton_CheckedChanged" Unfocused="email_Unfocused"/>
                 <Label x:Name="answer"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
@@ -70,12 +72,14 @@
                             />
             </StackLayout>
             <StackLayout>
-                <Editor TextColor="Gray"
+                <Editor x:Name="description"
+                        TextColor="Gray"
                         HeightRequest="100"
                         Placeholder="Write a description here"
                         PlaceholderColor="Gray"
-                        Text="{Binding PetDetail.Description}"/>
-                <Entry Placeholder="Area"
+                        Text="{Binding PetDetail.Description}" Unfocused="email_Unfocused"/>
+                <Entry x:Name="area"
+                       Placeholder="Area"
                        PlaceholderColor="Gray"
                        TextColor="Gray"
                        Text="{Binding PetDetail.Area}"/>
@@ -98,25 +102,29 @@
                 <Label Text="Contact Details:"
                        TextColor="White"
                        Padding="0,20,0,0"/>
-                <Entry Placeholder="Email"
-                       PlaceholderColor="Gray"
-                       TextColor="Gray"
-                       Text="{Binding PetDetail.Email}"/>
-                <Entry Placeholder="Phone Number"
-                       PlaceholderColor="Gray"
-                       TextColor="Gray"
-                       MaxLength="10"
-                       Text="{Binding PetDetail.PhoneNumber}"
-                       Keyboard="Numeric"/>
-                <Image x:Name="testpic"/>
-                    <Button Text="Submit"
+                    <Entry x:Name="email"
+                           Placeholder="Email"
+                           PlaceholderColor="Gray"
+                           TextColor="Gray"
+                           Text="{Binding PetDetail.Email}"
+                           Unfocused="email_Unfocused"/>
+                    <Entry x:Name="phone"
+                           Placeholder="Phone Number"
+                           PlaceholderColor="Gray"
+                           TextColor="Gray"
+                           MaxLength="10"
+                           Text="{Binding PetDetail.PhoneNumber}" Unfocused="email_Unfocused"
+                           Keyboard="Numeric"/>
+                    <Button x:Name="btnSubmit"
+                            Text="Submit"
                             TextColor="White"
                             BackgroundColor="Transparent"
                             BorderColor="ForestGreen"
                             BorderWidth="1.5"
                             CornerRadius="30"
-                            Command="{Binding SavePetCommand}" 
+                            Command="{Binding SavePetCommand}"
                             Clicked="Button_Clicked_1"/>
+                            <!-- Helper fields -->
                     <Entry x:Name="downloadLink"
                            TextColor="White"
                            VerticalOptions="Center"

@@ -3,6 +3,7 @@ using LostAndFoundPatras.Models;
 using LostAndFoundPatras.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,10 +17,14 @@ namespace LostAndFoundPatras.Content
     {
         private string downloadlink = string.Empty;
         bool isWhite = false;
+        bool okayPhone = false, okayPhoto = false, okayLost = false, okayDescription = false, okayArea = false, okayEmail = false;
+        RadioButton radioButton;
+
         public AddPetsPage()
         {
             InitializeComponent();
             this.BindingContext = new AddPetsPageViewModel();
+            BtnDisable();
         }
 
         public AddPetsPage(PetModel pet)
@@ -49,7 +54,7 @@ namespace LostAndFoundPatras.Content
 
         private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            RadioButton radioButton = sender as RadioButton;
+            radioButton = sender as RadioButton;
             _lost.Text = $"{radioButton.Content}";
         }
         //Upload Photo
@@ -87,8 +92,104 @@ namespace LostAndFoundPatras.Content
 
         }
 
-        async private void Button_Clicked_1(object sender, EventArgs e)
+        private void Button_Clicked_1(object sender, EventArgs e)
         {
+            radioButton.IsChecked = false;
+            btnSubmit.IsEnabled = false;
+            downloadlink = "";
+            area.Text = "";
+            description.Text = "";
+        }        
+
+        // Disables submit button on page load
+        public void BtnDisable()
+        {
+            if (email.Text == null)
+            {
+                btnSubmit.IsEnabled = false;
+            }
+            else
+                btnSubmit.IsEnabled = true;
+        }
+        public void Format()
+        {
+            if (email.Text == null)
+            {
+                email.Text = "";
+            }
+            if (email.Text.Contains("@") && email.Text.Contains(".") && email.Text.Length > 10)
+            {
+                okayEmail = true;
+            }
+            if (phone.Text == null)
+            {
+                phone.Text = "";
+            }
+            if (phone.Text.Length == 10)
+            {
+                okayPhone = true;
+            }
+            else
+            {
+                okayPhone = false;
+            }
+            if (downloadlink != null)
+                if (downloadlink.StartsWith("https://firebasestorage."))
+                {
+                    okayPhoto = true;
+                }
+            if (this.ProcessSelection() == false)
+                App.Current.MainPage.DisplayAlert("Oops!", "Don't forget to select between Lost and Found", "Ok");
+            //if (radioButton.Content == null || radioButton.Content != null || radioButton == null || radioButton != null)
+            //{
+            //    radioButton.IsChecked = true;
+            //    radioButton.Content = ch1.Content;
+            //}
+            //if (radioButton.IsChecked)
+            //{
+            //    okayLost = true;
+            //}
+            if (description.Text == null)
+            {
+                description.Text = "";
+            }
+            if (description.Text.Length > 0)
+            {
+                okayDescription = true;
+            }
+            if (area.Text == null)
+            {
+                area.Text = "";
+            }
+            if (area.Text.Length > 0)
+            {
+                okayArea = true;
+            }
+               // Debug.WriteLine($"Phone:{okayPhone}, Photo:{okayPhoto}, Lost:{okayLost}, Description:{okayDescription}, Area:{okayArea}, Email:{okayEmail}");
+            if (okayPhone && okayPhoto && okayLost && okayDescription && okayArea && okayEmail)
+            {
+                btnSubmit.IsEnabled = true;
+            }
+            else
+            {
+                btnSubmit.IsEnabled = false;
+            }
+        }
+        // email validation
+        private void email_Unfocused(object sender, FocusEventArgs e)
+        {
+            Format();
+        }
+        private bool ProcessSelection()
+        {
+            bool IsOK = true;
+            if (radioButton.IsChecked)
+            {
+                okayLost = true;
+            }
+            else
+                IsOK = false;
+            return IsOK;
         }
     }
 }

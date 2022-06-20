@@ -30,17 +30,17 @@ namespace LostAndFoundPatras.ViewModels
         public PetListPageViewModel()
         {
             _petService = DependencyService.Resolve<IPetService>();
-            GetAllPets();
+            GetLostPets();
         }
         #endregion
 
         #region Methods
-        private void GetAllPets()
+        private void GetLostPets()
         {
             IsBusy = true;
             Task.Run(async () =>
-            {
-                var petList = await _petService.GetAllPets();
+            { 
+                var petList = await _petService.GetLostPets();
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
@@ -65,7 +65,7 @@ namespace LostAndFoundPatras.ViewModels
         public ICommand RefreshCommand => new Command(() =>
         {
             IsRefreshing = true;
-            GetAllPets();
+            GetLostPets();
         });
 
         public ICommand SelectedPetCommand => new Command<PetModel>(async (pet) =>
@@ -84,7 +84,7 @@ namespace LostAndFoundPatras.ViewModels
                     bool deleteResponse = await _petService.DeletePet(pet.Key);
                     if (deleteResponse)
                     {
-                        GetAllPets();
+                        GetLostPets();
                     }
                 }
             }

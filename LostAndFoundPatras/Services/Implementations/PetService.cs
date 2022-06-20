@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using LostAndFoundPatras.Content;
 using LostAndFoundPatras.Models;
 using LostAndFoundPatras.Services.Interfaces;
 using System;
@@ -23,7 +24,7 @@ namespace LostAndFoundPatras.Services.Implementations
             {
                 try
                 {
-                    await firebase.Child(nameof(PetModel)).Child(petModel.Key).PutAsync(petModel);
+                    await firebase.Child(nameof(PetModel)).Child(petModel.Lost).Child(petModel.Key).PutAsync(petModel);
                     return true;
                 }
                 catch (Exception ex)
@@ -33,7 +34,7 @@ namespace LostAndFoundPatras.Services.Implementations
             }
             else
             {
-                var response = await firebase.Child(nameof(PetModel)).PostAsync(petModel);
+                var response = await firebase.Child(nameof(PetModel)).Child(petModel.Lost).PostAsync(petModel);
                 if (response.Key != null)
                 {
                     return true;
@@ -43,7 +44,6 @@ namespace LostAndFoundPatras.Services.Implementations
                     return false;
                 }
             }
-
         }
         public async Task<bool> DeletePet(string Key)
         {
@@ -57,19 +57,22 @@ namespace LostAndFoundPatras.Services.Implementations
                 return false;
             }
         }
-        public async Task<List<PetModel>> GetAllPets()
+        public async Task<List<PetModel>> GetLostPets()
         {
-            return (await firebase.Child(nameof(PetModel)).OnceAsync<PetModel>()).Select(f => new PetModel
             {
-                Lost = f.Object.Lost,
-                Date = f.Object.Date,
-                Description = f.Object.Description,
-                Area = f.Object.Area,
-                Photo = f.Object.Photo,
-                Email = f.Object.Email,
-                PhoneNumber = f.Object.PhoneNumber,
-                Key = f.Key
-            }).ToList();
+                return (await firebase.Child(nameof(PetModel)).Child(nameof(PetModel.Lost)).OnceAsync<PetModel>()).Select(f => new PetModel
+                {
+                    Lost = f.Object.Lost,
+                    Date = f.Object.Date,
+                    Description = f.Object.Description,
+                    Area = f.Object.Area,
+                    Photo = f.Object.Photo,
+                    Email = f.Object.Email,
+                    PhoneNumber = f.Object.PhoneNumber,
+                    Key = f.Key
+                }).ToList();
+            }
+            
         }
     }
 }

@@ -16,7 +16,6 @@ namespace LostAndFoundPatras.ViewModels
         private readonly IPetService _petService;
 
         private PetModel _petDetail = new PetModel();
-
         public PetModel PetDetail
         {
             get => _petDetail;
@@ -35,6 +34,7 @@ namespace LostAndFoundPatras.ViewModels
             _petService = DependencyService.Resolve<IPetService>();
             PetDetail = new PetModel
             {
+                Found = petResponse.Found,
                 Lost = petResponse.Lost,
                 Date = petResponse.Date,
                 Description = petResponse.Description,
@@ -44,7 +44,7 @@ namespace LostAndFoundPatras.ViewModels
                 PhoneNumber = petResponse.PhoneNumber,
                 Key = petResponse.Key
             };
-            OnPropertyChanged(nameof(petResponse.Date));
+            //OnPropertyChanged(nameof(petResponse.Date));
         }
         #endregion
 
@@ -56,7 +56,6 @@ namespace LostAndFoundPatras.ViewModels
             bool res = await _petService.AddOrUpdatePet(PetDetail);
             if (res)
             {
-
                 if (!string.IsNullOrWhiteSpace(PetDetail.Key))
                 {
                     await App.Current.MainPage.DisplayAlert("Success!", "Record Updated successfully.", "Ok");
