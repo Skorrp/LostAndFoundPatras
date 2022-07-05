@@ -8,140 +8,144 @@
              BackgroundColor="#112B40">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Padding="40">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="120"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-
-                </Grid.RowDefinitions>
-
-                <Button
-                    x:Name="btnTheme"
-                    Clicked="btnTheme_Clicked"
-                    Text="theme"
-                    TextTransform="Lowercase"
-                    BackgroundColor="White"
-                    TextColor="#112B40"
-                    Grid.Column="4"
-                    Grid.Row="0"
-                    Margin="54,1,0,10"
-                    HeightRequest="50"
-                    CornerRadius="20"
-                    BorderColor="ForestGreen"
-                    BorderWidth="1.5"/>
-            </Grid>
-            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <Label TextColor="White" Text="Lost your Pet? Found a pet you believe someone's looking for?" HorizontalTextAlignment="Center"/>
-                <Label TextColor="White" Text="Submit the form below now!" HorizontalTextAlignment="Center"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <RadioButton x:Name="ch1"
-                             Content="Lost"
-                             Padding="0,0,50,0" 
-                             TextColor="Gray" 
-                             BackgroundColor="Transparent"
-                             CheckedChanged="RadioButton_CheckedChanged" Unfocused="email_Unfocused"/>
-                <RadioButton x:Name="ch2"
-                             Content="Found"
-                             Padding="0,0,0,0" 
-                             TextColor="Gray" 
-                             BackgroundColor="Transparent"
-                             CheckedChanged="RadioButton_CheckedChanged" Unfocused="email_Unfocused"/>
-                <Label x:Name="answer"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
-                <Label Text="Date:"
-                       TextColor="White"
-                       HorizontalTextAlignment="Center"
-                       Padding="0,13,0,0"/>
-                <DatePicker Format="dd/MM/yyyy" 
-                            x:Name="PetDate"
-                            Date="{x:Static sys:DateTime.Today}"
-                            MaximumDate="{x:Static sys:DateTime.Now}"
-                            TextColor="Gray"
-                            BackgroundColor="Transparent"
-                            />
-            </StackLayout>
             <StackLayout>
-                <Editor x:Name="description"
-                        TextColor="Gray"
-                        HeightRequest="100"
-                        Placeholder="Write a description here"
-                        PlaceholderColor="Gray"
-                        Text="{Binding PetDetail.Description}" Unfocused="email_Unfocused"/>
-                <Entry x:Name="area"
-                       Placeholder="Area"
-                       PlaceholderColor="Gray"
-                       TextColor="Gray"
-                       Text="{Binding PetDetail.Area}"/>
+                <StackLayout x:Name="LoggedInContent" Padding="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="120"/>
+                        </Grid.ColumnDefinitions>
 
-                <StackLayout Orientation="Horizontal" Spacing="20">
-                        <Button Text="Upload Photo"
-                        Clicked="Button_Clicked"
-                        TextTransform="None"
-                        BackgroundColor="#112B40"
-                        TextColor="White"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+
+                        </Grid.RowDefinitions>
+
+                        <Button
+                        x:Name="btnTheme"
+                        Clicked="btnTheme_Clicked"
+                        Text="theme"
+                        TextTransform="Lowercase"
+                        BackgroundColor="White"
+                        TextColor="#112B40"
+                        Grid.Column="4"
+                        Grid.Row="0"
+                        Margin="54,1,0,10"
+                        HeightRequest="50"
+                        CornerRadius="20"
                         BorderColor="ForestGreen"
-                        BorderWidth="1.5"
-                        CornerRadius="25"/>
+                        BorderWidth="1.5"/>
+                    </Grid>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label TextColor="White" Text="Lost your Pet? Found a pet you believe someone's looking for?" HorizontalTextAlignment="Center"/>
+                        <Label TextColor="White" Text="Submit the form below now!" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-                <ProgressBar x:Name="progressBar"
-                             ProgressColor="ForestGreen"
-                             IsVisible="False"
-                             Grid.Row="1"
-                             Grid.ColumnSpan="1"/>
-                <Label Text="Contact Details:"
-                       TextColor="White"
-                       Padding="0,20,0,0"/>
-                    <Entry x:Name="email"
-                           Placeholder="Email"
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <RadioButton Content="Lost"
+                                 Padding="0,0,50,0" 
+                                 TextColor="Gray" 
+                                 BackgroundColor="Transparent"
+                                 CheckedChanged="RadioButton_CheckedChanged" Unfocused="email_Unfocused"/>
+                        <RadioButton Content="Found"
+                                 Padding="0,0,0,0" 
+                                 TextColor="Gray" 
+                                 BackgroundColor="Transparent"
+                                 CheckedChanged="RadioButton_CheckedChanged" Unfocused="email_Unfocused"/>
+                        <Label x:Name="answer"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center">
+                        <Label Text="Date:"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           Padding="0,13,0,0"/>
+                        <DatePicker Format="dd/MM/yyyy" 
+                                x:Name="PetDate"
+                                Date="{x:Static sys:DateTime.Today}"
+                                MaximumDate="{x:Static sys:DateTime.Now}"
+                                TextColor="Gray"
+                                BackgroundColor="Transparent"
+                                />
+                    </StackLayout>
+                    <StackLayout>
+                        <Editor x:Name="description"
+                            TextColor="Gray"
+                            HeightRequest="100"
+                            Placeholder="Write a description here"
+                            PlaceholderColor="Gray"
+                            Text="{Binding PetDetail.Description}" Unfocused="email_Unfocused"/>
+                        <Entry x:Name="area"
+                           Placeholder="Area"
                            PlaceholderColor="Gray"
                            TextColor="Gray"
-                           Text="{Binding PetDetail.Email}"
-                           Unfocused="email_Unfocused"/>
-                    <Entry x:Name="phone"
-                           Placeholder="Phone Number"
-                           PlaceholderColor="Gray"
-                           TextColor="Gray"
-                           MaxLength="10"
-                           Text="{Binding PetDetail.PhoneNumber}" Unfocused="email_Unfocused"
-                           Keyboard="Numeric"/>
-                    <Button x:Name="btnSubmit"
-                            Text="Submit"
-                            TextColor="White"
-                            BackgroundColor="Transparent"
-                            BorderColor="ForestGreen"
-                            BorderWidth="1.5"
-                            CornerRadius="30"
-                            Command="{Binding SavePetCommand}"
-                            Clicked="Button_Clicked_1"/>
-                            <!-- Helper fields -->
-                    <Entry x:Name="downloadLink"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           Text="{Binding PetDetail.Photo}" IsVisible="False"/>
-                    <Entry x:Name="_date"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           IsVisible="False"
-                           Text="{Binding PetDetail.Date}"/>
-                    <Entry x:Name="_lost"
-                           TextColor="White"
-                           VerticalOptions="Center"
-                           IsVisible="False"
-                           Text="{Binding PetDetail.Lost}"/>
+                           Text="{Binding PetDetail.Area}"/>
 
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Button Text="Upload Photo"
+                                    Clicked="Button_Clicked"
+                                    TextTransform="None"
+                                    BackgroundColor="#112B40"
+                                    TextColor="White"
+                                    BorderColor="ForestGreen"
+                                    BorderWidth="1.5"
+                                    CornerRadius="25"/>
+                        </StackLayout>
+                        <ProgressBar x:Name="progressBar"
+                                 ProgressColor="ForestGreen"
+                                 IsVisible="False"
+                                 Grid.Row="1"
+                                 Grid.ColumnSpan="1"/>
+                        <Label Text="Contact Details:"
+                           TextColor="White"
+                           Padding="0,20,0,0"/>
+                        <Entry x:Name="email"
+                               Placeholder="Email"
+                               PlaceholderColor="Gray"
+                               TextColor="Gray"
+                               Text="{Binding PetDetail.Email}"
+                               Unfocused="email_Unfocused"/>
+                        <Entry x:Name="phone"
+                               Placeholder="Phone Number"
+                               PlaceholderColor="Gray"
+                               TextColor="Gray"
+                               MaxLength="10"
+                               Text="{Binding PetDetail.PhoneNumber}" Unfocused="email_Unfocused"
+                               Keyboard="Numeric"/>
+                        <Button x:Name="btnSubmit"
+                                Text="Submit"
+                                TextColor="White"
+                                BackgroundColor="Transparent"
+                                BorderColor="ForestGreen"
+                                BorderWidth="1.5"
+                                CornerRadius="30"
+                                Command="{Binding SavePetCommand}"
+                                Clicked="Button_Clicked_1"/>
+                        <!-- Helper fields -->
+                        <Entry x:Name="downloadLink"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               Text="{Binding PetDetail.Photo}" IsVisible="False"/>
+                        <Entry x:Name="_date"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               IsVisible="False"
+                               Text="{Binding PetDetail.Date}"/>
+                        <Entry x:Name="_lost"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               IsVisible="False"
+                               Text="{Binding PetDetail.Lost}"/>
+
+                    </StackLayout>
                 </StackLayout>
-        </StackLayout>
+                <StackLayout x:Name="NotLoggedInContent" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                    <Label TextColor="White" Text="You have to log in in order to post a petition!" HorizontalTextAlignment="Center"/>
+                    <Label TextColor="White" Text="Swipe to the right to Log In with your Google account" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

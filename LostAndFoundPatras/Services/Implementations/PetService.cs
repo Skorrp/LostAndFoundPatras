@@ -72,7 +72,22 @@ namespace LostAndFoundPatras.Services.Implementations
                     Key = f.Key
                 }).ToList();
             }
-            
+        }
+        public async Task<List<PetModel>> GetFoundPets()
+        {
+            {
+                return (await firebase.Child(nameof(PetModel)).Child(nameof(PetModel.Found)).OnceAsync<PetModel>()).Select(f => new PetModel
+                {
+                    Found = f.Object.Found,
+                    Date = f.Object.Date,
+                    Description = f.Object.Description,
+                    Area = f.Object.Area,
+                    Photo = f.Object.Photo,
+                    Email = f.Object.Email,
+                    PhoneNumber = f.Object.PhoneNumber,
+                    Key = f.Key
+                }).ToList();
+            }
         }
     }
 }

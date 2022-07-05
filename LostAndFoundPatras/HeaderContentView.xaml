@@ -5,7 +5,7 @@
              HeightRequest="170">
     <ContentView.Content>
         <Grid HorizontalOptions="FillAndExpand"
-        VerticalOptions="FillAndExpand">
+              VerticalOptions="FillAndExpand">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="10"/>
@@ -47,7 +47,7 @@
                     HorizontalTextAlignment="Start"
                     VerticalTextAlignment="Center"
                     TextColor="White" Text=""/>
-                
+
                 <Button
                     x:Name="btnLogin"
                     TextColor="White"
@@ -55,7 +55,7 @@
                     BackgroundColor="Transparent"
                     Margin="-30,-10,155,0"
                     Clicked="btnLogin_Clicked"/>
-                
+
             </StackLayout>
         </Grid>
     </ContentView.Content>

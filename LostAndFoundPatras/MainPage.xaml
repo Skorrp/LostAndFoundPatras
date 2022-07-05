@@ -27,7 +27,6 @@
     </Shell.FlyoutHeader>
 
 
-
     <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
                 Shell.TabBarIsVisible="True"
                 Title="Pets"
@@ -36,17 +35,18 @@
         <Tab Icon="lost.png"
              Title="Lost"
              Style="{StaticResource LostStyle}">
-            <ShellContent Title="LostPets" IsTabStop="True" ContentTemplate="{DataTemplate content:LostPetsPage}" />
-        </Tab>
+            <ShellContent Title="LostPets" IsTabStop="True" ContentTemplate="{DataTemplate content:LostPetsPage}"/>
+        </Tab>  
         <Tab Icon="found.png"
              Title="Found"
              Style="{StaticResource FoundStyle}">
-            <ShellContent Title="LostPets" IsTabStop="True" ContentTemplate="{DataTemplate content:FoundPetsPage}" />
+            <ShellContent Title="FoundPets" IsTabStop="True" ContentTemplate="{DataTemplate content:FoundPetsPage}" />
         </Tab>
-        <Tab Icon="ic_action_add.png"
+        <Tab x:Name="tabAddPet"
+             Icon="ic_action_add.png"
              Title="Add"
              Style="{StaticResource AddStyle}">
-            <ShellContent Title="AddPets" IsTabStop="True" ContentTemplate="{DataTemplate content:AddPetsPage}" />
+            <ShellContent x:Name="tabAddPetShell" Title="AddPets" IsTabStop="True" ContentTemplate="{DataTemplate content:AddPetsPage}"/>
         </Tab>
     </FlyoutItem>
 

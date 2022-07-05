@@ -4,7 +4,6 @@
              xmlns:viewmodels="clr-namespace:LostAndFoundPatras.ViewModels"
              xmlns:models="clr-namespace:LostAndFoundPatras.Models"
              x:DataType="viewmodels:PetListPageViewModel"
-             Title="Pet List"
              x:Class="LostAndFoundPatras.Content.LostPetsPage">
     <ContentPage.Content>
         <StackLayout Margin="10,0,10,0">

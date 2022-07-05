@@ -25,6 +25,19 @@ namespace LostAndFoundPatras.Content
             InitializeComponent();
             this.BindingContext = new AddPetsPageViewModel();
             BtnDisable();
+            MessagingCenter.Subscribe<string, string>("this", "S.A.G.A.P.O", (sender, message) => {
+                string data = message.ToString();
+                if (data == "True")
+                {
+                    LoggedInContent.IsVisible = true;
+                    NotLoggedInContent.IsVisible = false;
+                }
+                else
+                {
+                    LoggedInContent.IsVisible = false;
+                    NotLoggedInContent.IsVisible = true;
+                }
+            });
         }
 
         public AddPetsPage(PetModel pet)
@@ -140,15 +153,6 @@ namespace LostAndFoundPatras.Content
                 }
             if (this.ProcessSelection() == false)
                 App.Current.MainPage.DisplayAlert("Oops!", "Don't forget to select between Lost and Found", "Ok");
-            //if (radioButton.Content == null || radioButton.Content != null || radioButton == null || radioButton != null)
-            //{
-            //    radioButton.IsChecked = true;
-            //    radioButton.Content = ch1.Content;
-            //}
-            //if (radioButton.IsChecked)
-            //{
-            //    okayLost = true;
-            //}
             if (description.Text == null)
             {
                 description.Text = "";
