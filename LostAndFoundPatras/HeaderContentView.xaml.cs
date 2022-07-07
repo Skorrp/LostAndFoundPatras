@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using LostAndFoundPatras.Content;
 using System.Diagnostics;
+using Plugin.LocalNotifications;
 
 namespace LostAndFoundPatras
 {
@@ -70,10 +71,12 @@ namespace LostAndFoundPatras
             if (!Email.Text.Contains("@"))
             {
                 IsLogedIn = false;
+                CrossLocalNotifications.Current.Show("Login Details", "You are not logged in!");
             }
             else
             {
                 IsLogedIn = true;
+                CrossLocalNotifications.Current.Show("Login Details", "You are now logged in!");
             }
             MessagingCenter.Send("this", "S.A.G.A.P.O", IsLogedIn.ToString());
         }

@@ -68,7 +68,7 @@
         <Tab Icon="ic_action_add.png"
              Title="Add"
              Style="{StaticResource AddStyle}">
-            <ShellContent Title="AddVehicles" IsTabStop="True" ContentTemplate="{DataTemplate content:AddVehiclesPage}" />
+            <ShellContent Title="AddVehicles" IsTabStop="True" ContentTemplate="{DataTemplate local:LocationTrackingPage}" />
         </Tab>
     </FlyoutItem>
     <ShellContent Title="About" Icon="info.png" ContentTemplate="{DataTemplate content:AboutPage}" />
