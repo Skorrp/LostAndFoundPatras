@@ -18,5 +18,7 @@ namespace LostAndFoundPatras.Models
         [Required, MinLength(2)]
         public string PhoneNumber { get; set; }
         public string Found { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
     }
 }

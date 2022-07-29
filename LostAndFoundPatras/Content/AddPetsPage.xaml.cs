@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,14 +20,14 @@ namespace LostAndFoundPatras.Content
         bool isWhite = false;
         bool okayPhone = false, okayPhoto = false, okayLost = false, okayDescription = false, okayArea = false, okayEmail = false;
         RadioButton radioButton;
-
         public AddPetsPage()
         {
             InitializeComponent();
+            Initializer();
             this.BindingContext = new AddPetsPageViewModel();
             BtnDisable();
             MessagingCenter.Subscribe<string, string>("this", "S.A.G.A.P.O", (sender, message) => {
-                string data = message.ToString();
+                string data = message;
                 if (data == "True")
                 {
                     LoggedInContent.IsVisible = true;
@@ -39,7 +40,7 @@ namespace LostAndFoundPatras.Content
                 }
             });
         }
-
+        
         public AddPetsPage(PetModel pet)
         {
             InitializeComponent();
@@ -112,7 +113,22 @@ namespace LostAndFoundPatras.Content
             downloadlink = "";
             area.Text = "";
             description.Text = "";
-        }        
+        }
+
+        private async void Button_Clicked_2(object sender, EventArgs e)
+        {
+            var location = await Geolocation.GetLastKnownLocationAsync();
+            if (location == null)
+            {
+                location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                {
+                    DesiredAccuracy = GeolocationAccuracy.High,
+                    Timeout = TimeSpan.FromSeconds(30)
+                });
+            }
+            _Latitude.Text = location.Latitude.ToString();
+            _Longitude.Text = location.Longitude.ToString();
+        }
 
         // Disables submit button on page load
         public void BtnDisable()
@@ -194,6 +210,20 @@ namespace LostAndFoundPatras.Content
             else
                 IsOK = false;
             return IsOK;
+        }
+        private void Initializer()
+        {
+            var instance = new HeaderContentView();
+            if (instance.Initializer == "true")
+            {
+                LoggedInContent.IsVisible = true;
+                NotLoggedInContent.IsVisible = false;
+            }
+            else
+            {
+                LoggedInContent.IsVisible = false;
+                NotLoggedInContent.IsVisible = true;
+            }
         }
     }
 }

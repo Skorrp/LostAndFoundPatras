@@ -26,12 +26,10 @@
         <local:HeaderContentView/>
     </Shell.FlyoutHeader>
 
-
     <FlyoutItem FlyoutDisplayOptions="AsSingleItem"
                 Shell.TabBarIsVisible="True"
                 Title="Pets"
                 Icon="lost_pets.jpg">
-
         <Tab Icon="lost.png"
              Title="Lost"
              Style="{StaticResource LostStyle}">
@@ -54,7 +52,6 @@
                 Shell.TabBarIsVisible="True"
                 Title="Vehicles"
                 Icon="lost_vehicles.jpg">
-
         <Tab Icon="lost.png"
              Title="Lost"
              Style="{StaticResource LostStyle}">

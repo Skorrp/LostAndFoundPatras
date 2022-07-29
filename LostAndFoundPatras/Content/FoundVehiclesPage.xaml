@@ -8,6 +8,8 @@
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand"
                    FontSize="22"/>
+            <Label x:Name="ToBeRemoved" VerticalOptions="StartAndExpand" HorizontalOptions="Center"/>
+            <Label x:Name="TemporaryLocation" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

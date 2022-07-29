@@ -5,6 +5,7 @@ using LostAndFoundPatras.Models;
 using LostAndFoundPatras.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,35 +60,35 @@ namespace LostAndFoundPatras.Services.Implementations
         }
         public async Task<List<PetModel>> GetLostPets()
         {
+            return (await firebase.Child(nameof(PetModel)).Child(nameof(PetModel.Lost)).OnceAsync<PetModel>()).Select(f => new PetModel
             {
-                return (await firebase.Child(nameof(PetModel)).Child(nameof(PetModel.Lost)).OnceAsync<PetModel>()).Select(f => new PetModel
-                {
-                    Lost = f.Object.Lost,
-                    Date = f.Object.Date,
-                    Description = f.Object.Description,
-                    Area = f.Object.Area,
-                    Photo = f.Object.Photo,
-                    Email = f.Object.Email,
-                    PhoneNumber = f.Object.PhoneNumber,
-                    Key = f.Key
-                }).ToList();
-            }
+                Lost = f.Object.Lost,
+                Date = f.Object.Date,
+                Description = f.Object.Description,
+                Area = f.Object.Area,
+                Photo = f.Object.Photo,
+                Email = f.Object.Email,
+                PhoneNumber = f.Object.PhoneNumber,
+                Latitude = f.Object.Latitude,
+                Longitude = f.Object.Longitude,
+                Key = f.Key
+            }).ToList();
         }
         public async Task<List<PetModel>> GetFoundPets()
         {
+            return (await firebase.Child(nameof(PetModel)).Child(nameof(PetModel.Found)).OnceAsync<PetModel>()).Select(f => new PetModel
             {
-                return (await firebase.Child(nameof(PetModel)).Child(nameof(PetModel.Found)).OnceAsync<PetModel>()).Select(f => new PetModel
-                {
-                    Found = f.Object.Found,
-                    Date = f.Object.Date,
-                    Description = f.Object.Description,
-                    Area = f.Object.Area,
-                    Photo = f.Object.Photo,
-                    Email = f.Object.Email,
-                    PhoneNumber = f.Object.PhoneNumber,
-                    Key = f.Key
-                }).ToList();
-            }
+                Found = f.Object.Found,
+                Date = f.Object.Date,
+                Description = f.Object.Description,
+                Area = f.Object.Area,
+                Photo = f.Object.Photo,
+                Email = f.Object.Email,
+                PhoneNumber = f.Object.PhoneNumber,
+                Latitude = f.Object.Latitude,
+                Longitude = f.Object.Longitude,
+                Key = f.Key
+            }).ToList();
         }
     }
 }

@@ -55,6 +55,12 @@
                     BackgroundColor="Transparent"
                     Margin="-30,-10,155,0"
                     Clicked="btnLogin_Clicked"/>
+                <Switch 
+                    x:Name="switchLocationTracking"
+                    Margin="0,-43,80,0"
+                    OnColor="Transparent"
+                    ThumbColor="Turquoise"
+                    Toggled="switchLocationTracking_Toggled"/>
 
             </StackLayout>
         </Grid>

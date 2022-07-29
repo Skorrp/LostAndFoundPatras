@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using Plugin.Geolocator;
+using System.Diagnostics;
 
 namespace LostAndFoundPatras
 {
@@ -24,6 +25,7 @@ namespace LostAndFoundPatras
                         locationLabel.Text += $"{Environment.NewLine}{message.Latitude}, {message.Longitude}, {DateTime.Now.ToLongTimeString()}";
 
                         Console.WriteLine($"{message.Latitude}, {message.Longitude}, {DateTime.Now.ToLongTimeString()}");
+                        //Debug.WriteLine($"{message.Latitude}, {message.Longitude}, {DateTime.Now.ToLongTimeString()}");
                     });
                 });
 
@@ -46,7 +48,7 @@ namespace LostAndFoundPatras
             }
         }
 
-        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        public async void GomuGomuNo() //CHANGED TEMPORARILY! also changed to public
         {
             var permission = await Xamarin.Essentials.Permissions.RequestAsync<Xamarin.Essentials.Permissions.LocationAlways>();
 
@@ -110,8 +112,6 @@ namespace LostAndFoundPatras
         private void Current_PositionChanged(object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e)
         {
             locationLabel.Text += $"{e.Position.Latitude}, {e.Position.Longitude}, {e.Position.Timestamp.TimeOfDay}{Environment.NewLine}";
-
-            Console.WriteLine($"{e.Position.Latitude}, {e.Position.Longitude}, {e.Position.Timestamp.TimeOfDay}");
         }
     }
 }

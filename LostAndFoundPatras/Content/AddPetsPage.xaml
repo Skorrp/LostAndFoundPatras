@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <StackLayout x:Name="LoggedInContent" Padding="40">
+                <StackLayout x:Name="LoggedInContent" Padding="40" IsVisible="False">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -83,9 +83,17 @@
                            TextColor="Gray"
                            Text="{Binding PetDetail.Area}"/>
 
-                        <StackLayout Orientation="Horizontal" Spacing="20">
+                        <StackLayout Orientation="Horizontal" Spacing="90">
                             <Button Text="Upload Photo"
                                     Clicked="Button_Clicked"
+                                    TextTransform="None"
+                                    BackgroundColor="#112B40"
+                                    TextColor="White"
+                                    BorderColor="ForestGreen"
+                                    BorderWidth="1.5"
+                                    CornerRadius="25"/>
+                            <Button Text="Add Location"
+                                    Clicked="Button_Clicked_2"
                                     TextTransform="None"
                                     BackgroundColor="#112B40"
                                     TextColor="White"
@@ -138,10 +146,17 @@
                                VerticalOptions="Center"
                                IsVisible="False"
                                Text="{Binding PetDetail.Lost}"/>
-
+                        <Entry x:Name="_Latitude"
+                               VerticalOptions="Center"
+                               IsVisible="False"
+                               Text="{Binding PetDetail.Latitude}"/>
+                        <Entry x:Name="_Longitude"
+                               VerticalOptions="Center"
+                               IsVisible="False"
+                               Text="{Binding PetDetail.Longitude}"/>
                     </StackLayout>
                 </StackLayout>
-                <StackLayout x:Name="NotLoggedInContent" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <StackLayout x:Name="NotLoggedInContent" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" IsVisible="False">
                     <Label TextColor="White" Text="You have to log in in order to post a petition!" HorizontalTextAlignment="Center"/>
                     <Label TextColor="White" Text="Swipe to the right to Log In with your Google account" HorizontalTextAlignment="Center"/>
                 </StackLayout>

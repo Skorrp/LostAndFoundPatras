@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace LostAndFoundPatras.ViewModels
 {
@@ -51,11 +52,21 @@ namespace LostAndFoundPatras.ViewModels
                         foreach (var pet in petList)
                         {
                             Pets.Add(pet);
+                            Debug.WriteLine($"This Petition's Location is X:{pet.Latitude}, Y:{pet.Longitude}");
+                            MessagingCenter.Send(pet, "LocationData");
+                            //if (pet.Latitude == null)
+                            //{
+                            //    pet.Latitude = "0";
+                            //}
+                            //else
+                            //{
+                            //    string _pet = pet.Latitude.ToString();
+                            //    MessagingCenter.Send("this", "abcd", _pet.ToString());
+                            //}
                         }
                     }
                     IsBusy = IsRefreshing = false;
                 });
-
             });
         }
         #endregion

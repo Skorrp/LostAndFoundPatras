@@ -31,9 +31,10 @@ namespace LostAndFoundPatras.Droid
                 .SetContentText("Your location is being tracked")
                 .SetSmallIcon(Resource.Drawable.abc_ic_star_half_black_48dp)
                 .SetOngoing(true)
+                .SetChannelId(foregroundChannelId)
                 .SetContentIntent(pendingIntent);
 
-            if (global::Android.OS.Build.VERSION.SdkInt >= BuildVersionCodes.S)
+            if (global::Android.OS.Build.VERSION.SdkInt >= BuildVersionCodes.O)
             {
                 NotificationChannel notificationChannel = new NotificationChannel(foregroundChannelId, "Title", NotificationImportance.High);
                 notificationChannel.Importance = NotificationImportance.High;

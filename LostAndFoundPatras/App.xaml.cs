@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LostAndFoundPatras.Content;
 
 namespace LostAndFoundPatras
 {
@@ -12,13 +13,12 @@ namespace LostAndFoundPatras
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
             DependencyService.Register<IPetService, PetService>();
-            if (Application.Current.Properties.ContainsKey("IsUserLoggedIn"))
-            {
-                var isUserLoggedIn = Application.Current.Properties["IsUserLoggedIn"];
-            }
+            //if (Application.Current.Properties.ContainsKey("IsUserLoggedIn"))
+            //{
+            //    var isUserLoggedIn = Application.Current.Properties["IsUserLoggedIn"];
+            //}
         }
 
         protected override void OnStart()
@@ -34,17 +34,10 @@ namespace LostAndFoundPatras
 
         protected override void OnResume()
         {
-            if (Application.Current.Properties.ContainsKey("IsUserLoggedIn"))
-            {
-                var isUserLoggedIn = Application.Current.Properties["IsUserLoggedIn"];
-                //if (isUserLoggedIn is bool)
-                //{
-                //    bool xxxxx = (bool)isUserLoggedIn;
-                //    if (xxxxx)
-                //    {
-                //    }
-                //}
-            }
+            //if (Application.Current.Properties.ContainsKey("IsUserLoggedIn"))
+            //{
+            //    var isUserLoggedIn = Application.Current.Properties["IsUserLoggedIn"];
+            //}
         }
     }
 }

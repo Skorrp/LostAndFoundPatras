@@ -39,8 +39,16 @@
                                     <Label Text="Phone Number: " />
                                     <Label Text="{Binding PhoneNumber}" />
                                 </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="X:"/>
+                                    <Label Text="{Binding Latitude}"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Y:"/>
+                                    <Label Text="{Binding Longitude}"/>
+                                </StackLayout>
                                 <BoxView HeightRequest="1" Color="Gray" />
-
+                                
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodels:PetListPageViewModel}},Path=SelectedPetCommand}" CommandParameter="{Binding .}" />
                                 </StackLayout.GestureRecognizers>
